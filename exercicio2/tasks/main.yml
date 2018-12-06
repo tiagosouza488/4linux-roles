@@ -1,0 +1,41 @@
+---
+# tasks file for exercicio2
+
+- name: "Para o firewalld"
+  service:
+    name: firewalld
+    state: stopped
+    enabled: false
+  when: ansible_distribution == 'CentOS'
+
+- name: "instala o apache CentOS"
+  package:
+    name: httpd
+    state: latest
+  when: ansible_distribution == 'CentOS'
+
+- name: "instala o apache Debian"
+  package: 
+    name: apache2
+    state: latest
+  when: ansible_distribution != 'CentOS'
+
+- name: "Cria a pagia do site"
+  template:
+    src: index.html
+    dest: /var/www/html/index.html
+    mode: 0644
+
+- name: "inicia o servico no centos"
+  service:
+    name: httpd
+    state: started
+  when: ansible_distribution == 'CentOS'
+
+- name: "inicia o servicos no debian"
+  service:
+    name: apache2
+    state: started
+  when: ansible_distribution != 'CentOS'
+
+

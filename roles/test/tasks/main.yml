@@ -1,0 +1,11 @@
+---
+# tasks file for test
+- name: testando um modulo aleatorio
+  pachage:
+    name: "{{item}}"
+  with_items:
+    - htop
+    - vim
+    - cowsay
+    - figlet
+

@@ -1,0 +1,5 @@
+HOST={{dominio}}
+USUARIO={{usuario}}
+PASSWORD={{senha}}
+NOME DA MAQUINA={{ansible_hostname}}
+FAMILIA DA MAQUINA={{ansible_os_family}}

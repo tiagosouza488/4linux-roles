@@ -1,0 +1,10 @@
+
+# tasks file for initial
+- name: usuarios padroes
+  include: user.yaml
+
+- name: pacotes padroes
+  include: pacotes.yaml
+
+- name: configuracoes padroes
+  include: conf.yaml

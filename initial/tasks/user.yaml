@@ -1,0 +1,8 @@
+- name: garantindo os usuarios padroes
+  user:
+   name: "{{item.nome}}"
+   home: "{{item.casa}}"
+   state: "{{item.estado}}"
+  with_items:
+   - {nome: developer, casa: /srv/developer, estado: present}
+   - {nome: devops, casa: /srv/devops, estado: present}

@@ -1,0 +1,7 @@
+- name: criando pacotes padroes
+  package:
+   name:
+    - htop
+    - vim
+    - cowsay
+    - figlet

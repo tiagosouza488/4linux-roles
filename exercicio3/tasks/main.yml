@@ -1,0 +1,31 @@
+---
+# tasks file for exercicio3
+- name: Instala repositorio CentOS
+  yum:
+    name: https://yum.puppet.com/puppet5/puppet5-release-el-7.noarch.rpm
+    state: present
+  when: ansible_os_family == 'RedHat'
+
+- name: Instala repositorio Debian 
+  apt:
+    deb: "https://apt.puppetlabs.com/puppet5-release-xenial.deb"
+    update_cache: yes
+  when: ansible_os_family == 'Debian'
+
+- name: Instala puppet serve
+  package:
+    name: puppetserver
+  when: "'devops' in inventory_hostname"
+
+- name: Instala puppet client
+  package:
+    name: "{{item.name}}" 
+    update_cache: yes
+  when: "item.platform == ansible_os_family"
+  with_items:
+    - { name: "puppet-agent", platform: "RedHat" }
+    - { name: "puppet-agent", platform: "Debian" }
+
+
+
+
